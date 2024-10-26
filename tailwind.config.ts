@@ -12,6 +12,12 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      backgroundImage: {
+        'Footer': "url('../utils/images/Footer.jpg')",
+      },
+      fontFamily: {
+        'playfair': ['var(--font-playfair)', 'serif'],
+      }
     },
   },
   plugins: [],
