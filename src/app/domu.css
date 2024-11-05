@@ -1,0 +1,65 @@
+.first-vi{
+     margin-top: 100px;
+     margin: 0 auto;
+     width: 100%;
+     height: 600px;
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     overflow: hidden;
+     padding: 156px;
+}
+.img-container{
+    position: relative;
+    margin-top: 80px;
+    width: 800px;
+    height: 800.1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.transparent-object{
+    position: absolute;
+    width: 115%;
+    height: 90%;
+    top: 0px;
+    right: 0px;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, #000000 60%);
+    z-index: 1;
+    transform: translateX(40px) translateY(-10px);
+}
+.img-ring{
+    width: 730px;
+    height: 100%;
+    transform: translateY(-35px) translateX(-60px);
+    zoom: 20px;
+    z-index: 0;
+    object-fit: none;
+}
+.h1-vyroba{
+    font-size: 50px;
+    font-weight:bolder;
+    letter-spacing: -2px;
+    margin: 0;
+    text-wrap: nowrap;
+}
+.h1-p-vyroba{
+    font-size: 24px;
+    width: 100%;
+    line-height: 32px;
+}
+.section-vyroba{
+    width: 49%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transform: translateY(-20px) translateX(30px);
+}
+.button-vice{
+    font-size: 24px;
+    width: 136px;
+    height: 49px;
+    background-color: #ECDFCC;
+    color: black;
+}
