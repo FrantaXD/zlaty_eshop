@@ -1,26 +1,11 @@
 "use client";
 import { MutableRefObject, useEffect, useRef} from "react";
-interface SliderItemProps {
-  clear: (position: MutableRefObject<HTMLDivElement | null>, id: number) => void; // Функція для очищення
-  id: number; // Ідентифікатор
-}
 
-export const SliderItem = ({ clear, id }: SliderItemProps) => {
+
+export const SliderItem = (props: {move: (item: MutableRefObject<HTMLDivElement | null>, items: MutableRefObject<HTMLDivElement | null>[]) => void, items: MutableRefObject<HTMLDivElement | null>[]} ) => {
   const item = useRef<HTMLDivElement | null>(null);
-
   useEffect(() => {
-    setTimeout(() => {
-      if (item.current) {
-        item.current.style.left = `${376 * id + id * 50}px`;
-      }
-      clear(item, id);
-    }, .1);
-    setInterval(() => {
-      if (item.current) {
-        item.current.style.left = `${item.current.getBoundingClientRect().left + .3}px`;
-      }
-      clear(item, id);
-    }, .1);
+    props.move(item, props.items)
   }, []);
 
   return (

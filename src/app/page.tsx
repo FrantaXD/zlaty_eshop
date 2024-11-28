@@ -24,6 +24,17 @@ export default function Home() {
       <div>
         <Slider/>
       </div>
+      <div>
+        <section className="imgs-container">
+          <div className="fir">
+          <img src="" alt="work3" id="work3"/>
+          </div>
+          <div className="sco">
+            <img src="" alt="work" id="work"/>
+            <img src="" alt="work2" id="work2"/>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }

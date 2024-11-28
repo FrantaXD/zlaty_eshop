@@ -63,3 +63,35 @@
     background-color: #ECDFCC;
     color: black;
 }
+.imgs-container{
+   display: flex;
+   gap: 20px;
+   height: 500px;
+   width: 50%;
+   margin: 0 auto;
+   margin-bottom: 200px;
+}
+.fir{
+    width: 50%;
+}
+.sco{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#work{
+width: 100%;
+background-color: aquamarine;
+height: 55%;
+}
+#work2{
+width: 100%;
+background-color: aquamarine;
+    height: 45%;
+}
+#work3{
+width: 100%;
+background-color: aquamarine;
+    height: 100%;
+}
