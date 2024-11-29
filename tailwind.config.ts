@@ -13,7 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       backgroundImage: {
-        'Footer': "url('../utils/images/Footer.jpg')",
+        'Footer': "url('/Footer.jpg')",
       },
       fontFamily: {
         'playfair': ['var(--font-playfair)', 'serif'],

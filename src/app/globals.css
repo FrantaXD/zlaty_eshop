@@ -2,27 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer components {
+  * {
+    @apply scroll-smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #000;
-    --foreground: #ededed;
+  .navitem {
+    @apply text-2xl font-semibold mx-2 p-2 hover:underline;
+  }
+
+  button {
+    @apply select-none;
   }
 }
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: 'Playfair Display', serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
