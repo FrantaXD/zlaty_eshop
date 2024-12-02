@@ -1,17 +1,13 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark, faCartShopping, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faXmark, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 
 interface NavLink {
   href: string;
   title: string;
-  icon?: {
-    icon: IconDefinition;
-    left?: boolean;
-  };
 }
 
 export default function Header() {
@@ -19,50 +15,67 @@ export default function Header() {
   const [hasShadow, setHasShadow] = useState(false);
 
   const navLinks: NavLink[] = [
-    { href: "/", title: "Domů" },
-    { href: "/about", title: "O mně" },
-    { href: "/galerie", title: "Galerie" },
-    { href: "/nakupovat", title: "Nakupovat" },
-    { href: "/kosik", title: "Košík", icon: { icon: faCartShopping } },
+    { href: '/', title: 'Domů' },
+    { href: '/about', title: 'O mně' },
+    { href: '/galerie', title: 'Galerie' },
+    { href: '/nakupovat', title: 'Nakupovat' },
   ];
 
-  // Přidání stínu při scrollování
+  // Shadow on scroll
   useEffect(() => {
     const handleScroll = () => setHasShadow(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 bg-white transition-shadow duration-300 ${hasShadow ? "shadow-lg" : ""}`}>
-      <div className="flex justify-between items-center p-4 container mx-auto">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 bg-white transition-shadow duration-300 ${
+        hasShadow ? 'shadow-lg' : ''
+      }`}>
+      {/* Desktop menu */}
+      <div className='flex justify-evenly items-center p-4 container mx-auto'>
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold">
+        <Link href='/' className='text-xl font-bold'>
           Jovana Šichová
         </Link>
-
-        {/* Desktop menu */}
-        <div className="hidden md:flex space-x-6">
+        {/* Links */}
+        <div className='hidden md:flex space-x-6'>
           {navLinks.map((link, i) => (
             <button key={i} onClick={() => setNavbarOpen(false)}>
-              <Link key={i} href={link.href} className="text-lg font-medium text-black hover:text-blue-500 transition flex items-center gap-x-2">
-                {link.icon && link.icon.left && <FontAwesomeIcon icon={link.icon.icon} />} {link.title} {link.icon && !link.icon.left && <FontAwesomeIcon icon={link.icon.icon} />}
+              <Link
+                key={i}
+                href={link.href}
+                className='text-lg font-medium text-black hover:text-blue-500 transition flex items-center gap-x-2'>
+                {link.title}{' '}
               </Link>
             </button>
           ))}
         </div>
-
         {/* Mobile menu toggle */}
-        <FontAwesomeIcon icon={navbarOpen ? faXmark : faBars} className="md:hidden text-2xl cursor-pointer" onClick={() => setNavbarOpen(!navbarOpen)} />
+        <FontAwesomeIcon
+          icon={navbarOpen ? faXmark : faBars}
+          className='md:hidden text-2xl cursor-pointer'
+          onClick={() => setNavbarOpen(!navbarOpen)}
+        />
+        {/* Languages & Admin */}
+        <div className='flex items-center gap-4'>
+          <h2>CZ|EN</h2>
+          <FontAwesomeIcon icon={faCartShopping} />
+          <FontAwesomeIcon icon={faUser} />
+        </div>
       </div>
 
       {/* Mobile menu */}
       {navbarOpen && (
-        <div className="md:hidden flex flex-col items-end px-8 pb-4">
+        <div className='md:hidden flex flex-col items-end px-8 pb-4'>
           {navLinks.map((link, i) => (
             <button key={i} onClick={() => setNavbarOpen(false)}>
-              <Link key={i} href={link.href} className="text-lg font-medium text-black hover:text-blue-500 transition flex items-center">
-                {link.icon && link.icon.left && <FontAwesomeIcon icon={link.icon.icon} />} {link.title} {link.icon && !link.icon.left && <FontAwesomeIcon icon={link.icon.icon} />}
+              <Link
+                key={i}
+                href={link.href}
+                className='text-lg font-medium text-black hover:text-blue-500 transition flex items-center gap-x-2'>
+                {link.title}{' '}
               </Link>
             </button>
           ))}
