@@ -17,7 +17,7 @@ export default function Home() {
         <section className="img-container">
         <div className="transparent-object"></div>
           <div className="img-ring">
-            <Image src={IMG} alt="ring" layout="fill" objectFit="cover" />
+            <Image src={IMG} alt="ring" objectFit="cover" priority/>
           </div>
         </section>
       </div>
@@ -27,11 +27,11 @@ export default function Home() {
       <div>
         <section className="imgs-container">
           <div className="fir">
-          <img src="" alt="work3" id="work3"/>
+          <Image src="" alt="work3" id="work3"/>
           </div>
           <div className="sco">
-            <img src="" alt="work" id="work"/>
-            <img src="" alt="work2" id="work2"/>
+            <Image src="" alt="work" id="work"/>
+            <Image src="" alt="work2" id="work2"/>
           </div>
         </section>
       </div>
