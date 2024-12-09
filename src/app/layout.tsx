@@ -34,9 +34,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased overflow-x-hidden`}>
+         <div className="flex flex-col min-h-screen">
 
         {children}
         <Footer />
+        </div>
       </body>
     </html>
   );
