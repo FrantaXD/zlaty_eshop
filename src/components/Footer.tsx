@@ -17,9 +17,10 @@ const Footer = () => {
         <p>Instagram</p>
       </div>
       <div className="flex flex-col gap-3">
-        <Link href={'/'}><p>Home</p></Link>
-        <Link href={'/about'}><p>About</p></Link>
-        <Link href={'/shop'}><p>Shop</p></Link>
+        <Link href={'/'}><p>Domu</p></Link>
+        <Link href={'/about'}><p>O mně</p></Link>
+        <Link href={'/shop'}><p>Nakupovat</p></Link>
+        <Link href={'/galerie'}><p>Galerie</p></Link>
       </div>
     </footer>
   );
