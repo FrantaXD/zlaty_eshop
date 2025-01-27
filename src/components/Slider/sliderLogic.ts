@@ -15,7 +15,7 @@ export default function move(position: MutableRefObject<HTMLDivElement | null>, 
           items.forEach((element) => {
             if (element.current) {
               element.current.style.left = `${
-                element.current.getBoundingClientRect().left + 0.5
+                element.current.getBoundingClientRect().left + 0.4
               }px`;
             }
           });
