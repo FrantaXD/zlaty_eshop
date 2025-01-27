@@ -4,20 +4,10 @@ import Image from "next/image";
 import "./Slider.css";
 import { SliderItem } from "./Item";
 import move from "./sliderLogic";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
-import { get_products } from "../api_reqests/get_producrs";
+import { MutableRefObject,useRef} from "react";
 import { ArrayProject } from "@/utils/images/get_poducts_api";
 
-export const Slider = () => {
-  const [data, setData] = useState<ArrayProject>();
-  console.log(data);
-  useEffect(() => {
-    async function Data() {
-      setData(await get_products()
-      .then((e) => {return e}));
-    }
-    Data();
-  }, []);
+export const Slider = (props: {data: ArrayProject | undefined}) => {
 
   const items: MutableRefObject<HTMLDivElement | null>[] = [];
   items.push(useRef<HTMLDivElement | null>(null));
@@ -39,7 +29,7 @@ export const Slider = () => {
       </div>
       <section className="slider">
         {items.map((itt, i) => (
-          <SliderItem move={move} items={items} key={i} data={data?.products[i >= data?.products.length ? data?.products.length - 1 : i]}  />
+          <SliderItem move={move} items={items} key={i} data={props.data?.products[i > props.data?.products.length - 1 ? props.data?.products.length - 1 : i]}  />
         ))}
       </section>
     </section>

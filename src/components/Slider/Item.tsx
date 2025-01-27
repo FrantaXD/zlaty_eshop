@@ -17,7 +17,6 @@ export const SliderItem = (props: {
   useEffect(() => {
     props.move(item, props.items);
   }, [props]);
-  console.log("ww");
   return (
     <section className="slider-item" ref={item}>
       <div className="slider-img">
