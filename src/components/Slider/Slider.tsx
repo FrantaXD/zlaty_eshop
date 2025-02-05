@@ -3,7 +3,7 @@ import IMG from "../../utils/images/Footer.jpg";
 import Image from "next/image";
 import "./Slider.css";
 import { SliderItem } from "./Item";
-import move from "./SliderLogic";
+import move from "./sliderLogic";
 import { MutableRefObject, useRef } from "react";
 export const Slider = () => {
   const items: MutableRefObject<HTMLDivElement | null>[] = Array.from(
