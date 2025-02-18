@@ -34,18 +34,18 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 bg-white transition-shadow duration-300 ${hasShadow ? "shadow-lg" : ""}`}>
+    <header className={`sticky top-0 left-0 w-full z-50   bg-black  text-white transition-shadow duration-300 ${hasShadow ? "shadow-lg" : ""}`}>
       <div className="flex justify-between items-center p-4 container mx-auto">
         {/* Logo */}
         <Link href="/" className="text-xl font-bold">
-          Jovana Šichová
+          Jovana Šichová 
         </Link>
 
         {/* Desktop menu */}
         <div className="hidden md:flex space-x-6">
           {navLinks.map((link, i) => (
             <button key={i} onClick={() => setNavbarOpen(false)}>
-              <Link key={i} href={link.href} className="text-lg font-medium text-black hover:text-blue-500 transition flex items-center gap-x-2">
+              <Link key={i} href={link.href} className="text-lg font-medium text-black text-white hover:text-blue-500 transition flex items-center gap-x-2">
                 {link.icon && link.icon.left && <FontAwesomeIcon icon={link.icon.icon} />} {link.title} {link.icon && !link.icon.left && <FontAwesomeIcon icon={link.icon.icon} />}
               </Link>
             </button>
@@ -61,7 +61,7 @@ export default function Header() {
         <div className="md:hidden flex flex-col items-end px-8 pb-4">
           {navLinks.map((link, i) => (
             <button key={i} onClick={() => setNavbarOpen(false)}>
-              <Link key={i} href={link.href} className="text-lg font-medium text-black hover:text-blue-500 transition flex items-center">
+              <Link key={i} href={link.href} className="text-lg font-medium text-black text-white hover:text-blue-500 transition flex items-center">
                 {link.icon && link.icon.left && <FontAwesomeIcon icon={link.icon.icon} />} {link.title} {link.icon && !link.icon.left && <FontAwesomeIcon icon={link.icon.icon} />}
               </Link>
             </button>

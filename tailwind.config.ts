@@ -13,13 +13,14 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       backgroundImage: {
-        'Footer': "url('/Footer.jpg')",
+        Footer: "url('/Footer.jpg')",
       },
       fontFamily: {
-        'playfair': ['var(--font-playfair)', 'serif'],
-      }
+        playfair: ["var(--font-playfair)", "serif"], 
+      },
     },
   },
   plugins: [],
 };
+
 export default config;

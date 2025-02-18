@@ -5,16 +5,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
   weight: ["400", "700"],
@@ -33,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased overflow-x-hidden`}>
+      <body className={`  ${playfairDisplay.variable} font-playfair antialiased overflow-x-hidden min-h-screen flex flex-col bg-black`}>
         <Header />
         {children}
         <Footer />

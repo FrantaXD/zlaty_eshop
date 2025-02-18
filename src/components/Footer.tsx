@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-Footer w-full h-fit flex justify-around bg-cover font-playfair py-20 text-white">
       <div className="flex flex-col gap-3">
-        <h2 className="font-bold text-4xl">Kontaktuj</h2>
+        <h2 className="font-bold text-4xl">Kontaktuj </h2>
         <p>email: jovanak@seznam.cz</p>
         <p>číslo: 123 456 789</p>
       </div>
