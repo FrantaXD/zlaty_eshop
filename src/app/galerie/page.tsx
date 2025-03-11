@@ -4,7 +4,7 @@ async function fetchImages(){ //získání obráků z API
     if(!Incomingdata.ok){
         throw new Error('Failed to fetch images');
     }
-    return Incomingdata.json();//předání obrázků do Page()
+    return Incomingdata.json();//předání obrázků do Page()/
   }
 
 export default function Page({/*images:string[]*/}) {
