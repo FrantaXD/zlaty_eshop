@@ -15,3 +15,9 @@
     @apply select-none;
   }
 }
+/* globals.css */
+:root {
+
+  --font-playfair: 'Playfair Display', serif;
+}
+

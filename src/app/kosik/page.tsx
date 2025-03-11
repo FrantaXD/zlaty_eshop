@@ -68,9 +68,9 @@ export default function Cart() {
   }
 
   return (
-    <main className=" text-white  flex-1 mt-[60px]">
+    <main className=" text-white  flex-1 mt-[60px] font-playfair ">
       <div className="absolute right-[50%] translate-x-[50%]">
-        <h1 className="absoute mx-auto font-bold text-[64px] text-white">
+        <h1 className="absoute mx-auto  text-[64px] text-white">
           Košík
         </h1>
       </div>
@@ -84,7 +84,7 @@ export default function Cart() {
                     key={`${index}-${i}`}
                     className="flex gap-6 w-[660px] mb-12"
                   >
-                    <div>{e.quantity}</div>
+                  
                     <Cart_item
                       value={{
                         name: e.name,
@@ -112,7 +112,7 @@ export default function Cart() {
               kč
             </div>{" "}
             <button className="py-[10px] px-[25px] w-auto self-start bg-orange-100 text-3xl text-black font-bold mt-[20px] ml-auto ">
-              Pokračovat
+              <Link href={{pathname: "/kosik/form", query: {}}}>Pokračovat</Link>
             </button>
           </section>
         </div>
