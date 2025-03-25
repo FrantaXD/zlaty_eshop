@@ -11,7 +11,7 @@ export default function move(position: MutableRefObject<HTMLDivElement | null>, 
     } else {
       if (f === 5) {
         setInterval(() => {
-          let min: number = 1536;
+          let min: number = window.innerWidth;
           items.forEach((element) => {
             if (element.current) {
               element.current.style.left = `${
@@ -20,7 +20,7 @@ export default function move(position: MutableRefObject<HTMLDivElement | null>, 
             }
           });
           items.forEach((element) => {
-            if (element.current && element.current?.getBoundingClientRect().left > 1536) {
+            if (element.current && element.current?.getBoundingClientRect().left > window.innerWidth) {
               items.forEach((element2) => {
                 if (element2.current) {
                   min = Math.min(min, element2.current.getBoundingClientRect().left);
