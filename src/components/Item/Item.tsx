@@ -17,7 +17,6 @@ export interface ItemProps {
   imageWidth?: number;
 }
 
-// Interface for posting to cart
 interface product_curt_post_Interface {
   productId: number;
   quantity: number;
