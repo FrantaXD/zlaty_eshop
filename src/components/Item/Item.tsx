@@ -41,7 +41,7 @@ const Item = (props: ItemProps) => {
       const response = await post_product(productData);
 
       if (response) {
-        await refreshCart(); // Refresh cart count
+        await refreshCart();
         alert("Produkt byl přidán do košíku!");
       } else {
         alert("Nepodařilo se přidat produkt do košíku.");
