@@ -1,7 +1,7 @@
 import { Product_cart } from "@/interface/product_cart";
 import { product_curt_post_Interface, responde_cart } from "../interface/product_response";
 import axios from "axios";
-//
+
 const reqest = axios.create({baseURL: "https://apigolde-shop-production-5431.up.railway.app/", headers: {}, withCredentials: true});
 
 
