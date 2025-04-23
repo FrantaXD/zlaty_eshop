@@ -4,12 +4,34 @@ import Image from "next/image";
 import "./Slider.css";
 import { SliderItem } from "./Item";
 import move from "./sliderLogic";
-import { MutableRefObject, useRef } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
 export const Slider = () => {
   const items: MutableRefObject<HTMLDivElement | null>[] = Array.from(
-    { length: 5 },
+    { length: 6 },
     () => useRef<HTMLDivElement | null>(null)
   );
+  const [priveousWidth, setPreviousWidth] = useState<number>(window.innerWidth);
+  useEffect(() => {
+    const resize = async () => {
+      if(window.innerWidth == priveousWidth){
+        return;
+      }
+      await setTimeout(() => {
+        const diferensOfWidth = window.innerWidth + priveousWidth;
+        setPreviousWidth(diferensOfWidth);
+         items.forEach(e => { 
+         if(e.current){
+           let width = e.current.style.left.split("px");
+           e.current.style.left = `${parseFloat(width[0]) + diferensOfWidth}px`;
+         }
+       }, 1)
+      }
+    )
+    };
+   addEventListener("resize", resize)
+
+   return () => { removeEventListener("resize", resize)};
+  })
   return (
     <section className="slider-container">
       <div className="bacground-container">
@@ -23,7 +45,7 @@ export const Slider = () => {
       </div>
       <section className="slider">
         {items.map((it, i) => (
-          <SliderItem move={move} items={items} key={i} />
+          <SliderItem move={move}  items={items} key={i} />
         ))}
       </section>
     </section>

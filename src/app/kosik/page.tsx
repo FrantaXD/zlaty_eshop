@@ -75,14 +75,14 @@ export default function Cart() {
         </h1>
       </div>
       {continueOrder ? (
-        <div className="display flex justify-between  w-[1130px] m-auto mt-[160px] ">
-          <section className="w-[660px]">
+        <div className="flex justify-between  w-[1130px] m-auto mt-[160px]  max-[1180px]:flex-col max-[1180px]:w-[660px] max-[1180px]:gap-12 max-[660px]:w-[380px] ">
+          <section className="w-[660px] max-[660px]:w-[380px]">
             {cartItems &&
               cartItems.flatMap((e, index) =>
                 Array.from({ length: e.quantity }, (_, i) => (
                   <div
                     key={`${index}-${i}`}
-                    className="flex gap-6 w-[660px] mb-12"
+                    className="flex gap-6 w-[660px] mb-12 max-[660px]:w-[380px]"
                   >
                   
                     <Cart_item
@@ -101,17 +101,17 @@ export default function Cart() {
                 ))
               )}
           </section>
-          <section className="text-end flex flex-col gap-[10px] ">
-            <h2 className="text-[44px]">
+          <section className="text-end flex flex-col gap-[10px] max-[660px]:gap-[6px]">
+            <h2 className="text-[44px] max-[660px]:text-[30px]">
               <b>Celkem: {fullPrice && fullPrice.toString().substring(0, 6)}kč</b>
             </h2>
-            <div className="text-[30px]">
+            <div className="text-[30px] max-[660px]:text-[20px]">
               Celkem bez DPH:{" "}
               {fullPrice &&
                 (fullPrice - (fullPrice / 100) * 21).toString().substring(0, 8)}
               kč
             </div>{" "}
-            <button className="py-[10px] px-[25px] w-auto self-start bg-orange-100 text-3xl text-black font-bold mt-[20px] ml-auto ">
+            <button className="py-[10px] px-[25px] w-auto self-start bg-orange-100 text-3xl max-[660px]:text-xl text-black font-bold mt-[20px] ml-auto ">
               <Link href={{pathname: "/kosik/form", query: {}}}>Pokračovat</Link>
             </button>
           </section>
