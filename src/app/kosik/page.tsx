@@ -23,11 +23,16 @@ export default function Cart() {
 
   useEffect(() => {
     async function Get_Data() {
-      //await post_product({ productId: 2, quantity: 6}).then(e => alert(e?.message));
+    // await post_product({ productId: 2, quantity: 6}).then(e => alert(e?.message));
       const f = await get_products_cart().then((e) => e);
       setCarItems(f);
+      var newItems = f?.filter((e) => e.quantity !== 0);
+      console.log(newItems);
+      if (newItems?.length === 0) localStorage.setItem("itemsCount", "none");
+      else localStorage.setItem("itemsCount", "ok");
       if (f) setFullPrice(getPrice(f));
     }
+    
     Get_Data();
   }, []);
 
@@ -40,7 +45,6 @@ export default function Cart() {
   }
 
   async function RemoveItemFromCart(value: product_curt_post_Interface) {
-    console.log("sdfghj");
     if (cartItems) {
       const data = [...cartItems];
 
@@ -62,7 +66,11 @@ export default function Cart() {
 
     if (value.quantity == 0) {
       await delete_products_cart({ productId: value.productId });
+
       var newItems = cartItems?.filter((e) => e.quantity !== 0);
+      console.log(newItems);
+      if(newItems?.length === 0) localStorage.setItem("itemsCount", "none");
+      else localStorage.setItem("itemsCount", "ok");
       setCarItems(newItems);
     } else if (value.quantity >= 1) {
       await put_products_cart(value).then((e) => e);

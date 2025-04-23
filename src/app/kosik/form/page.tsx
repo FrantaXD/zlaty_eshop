@@ -2,9 +2,18 @@
 import { Cart_form } from "@/components/kosik_cart_items/cart_form";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function FormKosik() {
   const route = useRouter();
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      localStorage.getItem("itemsCount") === "none"
+    ) {
+      route.push("/kosik");
+    }
+  }, []);
   return (
     <main className=" text-white  flex-1 mt-[60px]">
       <div className="absolute right-[50%] translate-x-[50%]">
@@ -27,7 +36,7 @@ export default function FormKosik() {
               </p>
             </div>
           </Link>
-          <Link href={localStorage.getItem("name") ? "/kosik/podtverzeni" : "/nakupovat"}>
+          <Link href={typeof window !== "undefined" && localStorage.getItem("name") ? "/kosik/podtverzeni" : "/nakupovat"}>
             <div className="w-[110px] flex flex-col justify-center items-center gap-2 max-[660px]:w-[90px]">
               <div className="w-[43px] h-[43px] bg-gray-900 text-[35px] flex justify-center items-center max-[660px]:w-[34px] max-[660px]:h-[34px] max-[660px]:text-[28px]">
                 3
