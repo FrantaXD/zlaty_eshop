@@ -5,7 +5,7 @@ export default interface GalleryProps {
     products: Products[]; 
 }
 
-interface Products {
+export interface Products {
     id: number; 
     name: string; 
     description: string;
