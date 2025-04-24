@@ -16,12 +16,13 @@ const CartContext = createContext<CartContextType>({
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [cartCount, setCartCount] = useState(0);
+  const [cartCount, setCartCount] = useState<number>(0);
 
   const refreshCart = async () => {
     const cart = await get_products_cart();
     if (cart) {
       const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      console.log(totalItems);
       setCartCount(totalItems);
     }
   };
