@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-
+import IMG from "../../../public/jewelry2.jpg";
 export interface ItemProps {
     image: string,
     title: string,
@@ -12,9 +12,9 @@ const Item = (props: ItemProps) => {
         <div className=' w-fit'>
             <div className="relative overflow-hidden">
                 <Image 
-                    src={props.image} 
-                    width={350} 
-                    height={350} 
+                    src={IMG} 
+                    width={350}
+                    height={350}
                     alt="zboží" 
                     className="transition-transform duration-300 transform hover:scale-110 cursor-pointer" // added hover zoom
                 />
