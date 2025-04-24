@@ -4,6 +4,7 @@ import { Playfair_Display } from 'next/font/google';
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { CartProvider } from "@/contexts/CartContext";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -34,11 +35,14 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased overflow-x-hidden`}>
+        <CartProvider>
          <div className="flex flex-col min-h-screen font-playfair">
+        
         <Header/>
         {children}
         <Footer />
         </div>
+        </CartProvider>
       </body>
     </html>
   );

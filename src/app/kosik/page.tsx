@@ -15,12 +15,13 @@ import { product_curt_post_Interface } from "@/interface/product_response";
 import { Cart_item } from "@/components/kosik_cart_items/cart_item";
 import Link from "next/link";
 import { Cart_form } from "@/components/kosik_cart_items/cart_form";
+import { useCart } from "@/contexts/CartContext";
 
 export default function Cart() {
   const [cartItems, setCarItems] = useState<Product_cart[] | undefined>([]);
   const [fullPrice, setFullPrice] = useState<number>();
   const [continueOrder, setContinueOrder] = useState<boolean>(true);
-
+  const { cartCount, refreshCart } = useCart();
   useEffect(() => {
     async function Get_Data() {
     // await post_product({ productId: 2, quantity: 6}).then(e => alert(e?.message));
@@ -65,15 +66,15 @@ export default function Cart() {
     }
 
     if (value.quantity == 0) {
-      await delete_products_cart({ productId: value.productId });
-
+      await delete_products_cart({ productId: value.productId }).then(() => setTimeout(refreshCart, 500));
+      
       var newItems = cartItems?.filter((e) => e.quantity !== 0);
       console.log(newItems);
       if(newItems?.length === 0) localStorage.setItem("itemsCount", "none");
-      else localStorage.setItem("itemsCount", "ok");
+      else localStorage.setItem("itemsCount", "ok" );
       setCarItems(newItems);
     } else if (value.quantity >= 1) {
-      await put_products_cart(value).then((e) => e);
+      await put_products_cart(value).then(() => setTimeout(refreshCart, 500));
     }
     
   }
