@@ -44,7 +44,7 @@ export default function Header() {
 
   return (
     <header
-      className={`relative fixed top-0 left-0 w-full z-50 bg-center transition-shadow duration-300 h-24 ${hasShadow ? "shadow-lg" : ""
+      className={`relative top-0 left-0 w-full z-50 bg-center transition-shadow duration-300 h-24 ${hasShadow ? "shadow-lg" : ""
         }`}
       style={{ backgroundImage: `url(${HeaderImage.src})` }}
     >

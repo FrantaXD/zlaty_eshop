@@ -1,11 +1,16 @@
 "use client";
 import { MutableRefObject, useEffect, useRef} from "react";
 
-
-export const SliderItem = (props: {move: (item: MutableRefObject<HTMLDivElement | null>, items: MutableRefObject<HTMLDivElement | null>[]) => void, items: MutableRefObject<HTMLDivElement | null>[]} ) => {
+let f:number= 0;
+export const SliderItem = (props: {move: (item: MutableRefObject<HTMLDivElement | null>, items: MutableRefObject<HTMLDivElement | null>[], f:number) => void, items: MutableRefObject<HTMLDivElement | null>[]} ) => {
   const item = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    props.move(item, props.items)
+    props.move(item, props.items, f)
+    f++;
+    if(f== 6){
+      props.move(item, props.items, f)
+    }
+    return () => {f=0};
   }, []);
 
   return (

@@ -4,12 +4,36 @@ import Image from "next/image";
 import "./Slider.css";
 import { SliderItem } from "./Item";
 import move from "./sliderLogic";
-import { MutableRefObject, useRef } from "react";
+import { MutableRefObject, useEffect, useMemo, useRef, useState } from "react";
 export const Slider = () => {
-  const items: MutableRefObject<HTMLDivElement | null>[] = Array.from(
-    { length: 5 },
+  const [priveousWidth, setPreviousWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 0)
+  const [items] = useState<MutableRefObject<HTMLDivElement | null>[]>(Array.from(
+    { length: 6 },
     () => useRef<HTMLDivElement | null>(null)
-  );
+  )); 
+  
+  useEffect(() => {
+    const resize = async () => {
+      if(window.innerWidth == priveousWidth){
+        return;
+      }
+      await setTimeout(function() {
+        const diferensOfWidth = window.innerWidth + priveousWidth;
+        setPreviousWidth(diferensOfWidth);
+         items.forEach(e => { 
+         if(e.current){
+           let width = e.current.style.left.split("px");
+           e.current.style.left = `${parseFloat(width[0]) + diferensOfWidth}px`;
+           console.log("wtf2");
+         }
+       }, 1)
+      }
+    )
+    };
+   addEventListener("resize", resize)
+
+   return () => { removeEventListener("resize", resize)};
+  })
   return (
     <section className="slider-container">
       <div className="bacground-container">
@@ -23,7 +47,7 @@ export const Slider = () => {
       </div>
       <section className="slider">
         {items.map((it, i) => (
-          <SliderItem move={move} items={items} key={i} />
+          <SliderItem move={move}  items={items} key={i} />
         ))}
       </section>
     </section>
