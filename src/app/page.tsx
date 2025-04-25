@@ -27,11 +27,11 @@ export default function Home() {
       <div>
         <section className="imgs-container">
           <div className="fir">
-          <img src="" alt="work3" id="work3"/>
+          <Image src={IMG} alt="work3" id="work3"/>
           </div>
           <div className="sco">
-            <img src="" alt="work" id="work"/>
-            <img src="" alt="work2" id="work2"/>
+            <Image src={IMG} alt="work" id="work"/>
+            <Image src={IMG} alt="work2" id="work2"/>
           </div>
         </section>
       </div>
