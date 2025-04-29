@@ -1,10 +1,11 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Playfair_Display } from 'next/font/google';
 import "./globals.css";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
 import { CartProvider } from "@/contexts/CartContext";
+import LayoutWrapper from "@/components/LayoutWrapper";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -19,7 +20,7 @@ const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
   weight: ['400', '700'],
   subsets: ['latin'],
-})
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,20 +29,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased overflow-x-hidden`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased overflow-x-hidden`}>
         <CartProvider>
-         <div className="flex flex-col min-h-screen font-playfair">
-        
-        <Header/>
-        {children}
-        <Footer />
-        </div>
+          <LayoutWrapper>{children}</LayoutWrapper>
         </CartProvider>
       </body>
     </html>

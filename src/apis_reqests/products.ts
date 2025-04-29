@@ -24,3 +24,7 @@ export async function delete_products_cart(value: { productId: number, }){
 export async function get_products(){
   reqest.get("/api/products").then(e => console.log("get_products response: "+e.data)).catch(e => console.log("get_products response: "+undefined))
 }
+
+export async function add_product() {
+  
+}
