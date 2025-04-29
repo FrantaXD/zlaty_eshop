@@ -10,17 +10,19 @@ export async function post_product(values: product_curt_post_Interface): Promise
 }
 
 export async function get_products_cart(): Promise<Product_cart[] | undefined> {
-    return reqest.get("/api/cart").then(e => e.data).catch(e => undefined);
+  return await reqest.get("/api/cart").then(e => e.data).catch(e => undefined);
 }
 
 export async function put_products_cart(value: product_curt_post_Interface){
-  reqest.put("/api/cart/update", value).then(e => console.log("put_products_cart response: "+e.data)).catch(e => console.log("put_products_cart response: "+undefined))
+ return await reqest.put("/api/cart/update", value).then(e => console.log("put_products_cart response: "+e.data)).catch(e => console.log("put_products_cart response: "+undefined))
 }
 
 export async function delete_products_cart(value: { productId: number, }){
-  reqest.delete("/api/cart/remove", {data: value}).then(e => console.log("delete_products_cart response: "+e.data)).catch(e => console.log("delete_products_cart response: "+undefined))
+ return await reqest.delete("/api/cart/remove", {data: value}).then(e => console.log("delete_products_cart response: "+e.data)).catch(e => console.log("delete_products_cart response: "+undefined))
 }
 
 export async function get_products(){
-  reqest.get("/api/products").then(e => console.log("get_products response: "+e.data)).catch(e => console.log("get_products response: "+undefined))
+ return await reqest.get("/api/products").then(e => e.data).catch(e => e);
 }
+
+

@@ -4,15 +4,29 @@ import Image from "next/image";
 import "./Slider.css";
 import { SliderItem } from "./Item";
 import move from "./sliderLogic";
-import { MutableRefObject, useEffect, useMemo, useRef, useState } from "react";
+import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { get_products } from "@/apis_reqests/products";
+import { Product_cart } from "@/interface/product_cart";
+let once = true;
 export const Slider = () => {
   const [priveousWidth, setPreviousWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 0)
+  const [images, setImages] = useState<string[]>([""]);
   const [items] = useState<MutableRefObject<HTMLDivElement | null>[]>(Array.from(
     { length: 6 },
     () => useRef<HTMLDivElement | null>(null)
   )); 
   
   useEffect(() => {
+    (async function(){
+      if(once){
+        const product = await get_products().then(e => e);
+        console.log(product);
+        const imageFromApi: string[] = product.products.map((e:Product_cart) => e.mediaUrls[0]);
+        console.log(imageFromApi);
+        setImages(imageFromApi);
+        once = false
+      }
+    })()
     const resize = async () => {
       if(window.innerWidth == priveousWidth){
         return;
@@ -32,7 +46,7 @@ export const Slider = () => {
     };
    addEventListener("resize", resize)
 
-   return () => { removeEventListener("resize", resize)};
+   return () => { removeEventListener("resize", resize); once = false};
   })
   return (
     <section className="slider-container">
@@ -47,7 +61,7 @@ export const Slider = () => {
       </div>
       <section className="slider">
         {items.map((it, i) => (
-          <SliderItem move={move}  items={items} key={i} />
+          <SliderItem move={move}  items={items} key={i} image={images[i < images.length ? i : images.length]}/>
         ))}
       </section>
     </section>

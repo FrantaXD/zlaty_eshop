@@ -1,8 +1,9 @@
 "use client";
+import Image from "next/image";
 import { MutableRefObject, useEffect, useRef} from "react";
 
 let f:number= 0;
-export const SliderItem = (props: {move: (item: MutableRefObject<HTMLDivElement | null>, items: MutableRefObject<HTMLDivElement | null>[], f:number) => void, items: MutableRefObject<HTMLDivElement | null>[]} ) => {
+export const SliderItem = (props: {move: (item: MutableRefObject<HTMLDivElement | null>, items: MutableRefObject<HTMLDivElement | null>[], f:number) => void, items: MutableRefObject<HTMLDivElement | null>[], image: string},   ) => {
   const item = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     props.move(item, props.items, f)
@@ -15,7 +16,7 @@ export const SliderItem = (props: {move: (item: MutableRefObject<HTMLDivElement 
 
   return (
     <section className="slider-item" ref={item}>
-      <div className="slider-img">{/* <Image scr={} alt="poduct"/> */}</div>
+      <div className="slider-img"><Image src={props.image} alt="poduct" fill/></div>
       <div className="text-info-slider-item">
         <h3>Lorem</h3>
         <p>100Kč</p>

@@ -19,23 +19,23 @@ const Filter = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-[#E9E9E9] p-5 w-[300px] text-black relative sticky top-[70px] mt-2 ">
-      <p className="underline text-[18px] font-bold">Filtry:</p>
+    <div className="bg-[#1D1D1DF7] bg-opacity-80 text-opacity-80 p-5 w-[300px] ml-3  text-white absolute mt-4 ">
+      <p className="text-[18px] font-bold">Filtry:</p>
       <div className=" flex justify-between">
-        <p className="underline text-[18px] mt-[10px]">Seřadit podle:</p>
+        <p className="text-[18px] mt-[10px]">Seřadit podle:</p>
         <div
-          className="bg-[#D4D4D4] p-2 rounded cursor-pointer flex justify-between items-center"
+          className="bg-zinc-800 p-2 rounded cursor-pointer flex justify-between items-center"
           onClick={() => setIsOpen(!isOpen)}
         >
           {sortSelected.label}
           <span>{isOpen?<>▲</>:<>▼</>}</span>
         </div>
         {isOpen && (
-          <div className="bg-white border mt-1 rounded shadow-md absolute w-full z-10">
+          <div className="bg-[#1D1D1DF7] border mt-1 rounded shadow-md absolute w-full z-10">
             {sortOptions.map((option) => (
               <div
                 key={option.value}
-                className="p-2 hover:bg-gray-200 cursor-pointer"
+                className="p-2 hover:bg-gray-900 cursor-pointer"
                 onClick={() => {
                   setSortSelected(option);
                   setIsOpen(false);
@@ -48,14 +48,14 @@ const Filter = () => {
         )}
       </div>
       <div className=" flex mt-[10px] gap-[15px]">
-        <p className=" underline text-[18px] ">Material:</p>
+        <p className=" text-[18px] ">Material:</p>
         <ul className=" flex flex-col gap-[5px]">
-            <li className=" text-[#555555] underline text-[18px] cursor-pointer">Zlato</li>
-            <li className=" text-[#555555] underline text-[18px] cursor-pointer">Stříbro</li>
+            <li className=" text-slate-300  text-[18px] cursor-pointer">Zlato</li>
+            <li className=" text-slate-300 text-[18px] cursor-pointer">Stříbro</li>
         </ul>
       </div>
       <div className="mt-4">
-        <p className="underline text-[18px]">Cena:</p>
+        <p className="text-[18px]">Cena:</p>
         <Slider
           value={priceRange}
           onChange={handlePriceChange}
@@ -72,12 +72,12 @@ const Filter = () => {
         </div>
       </div>
       <div className=" flex mt-[10px] gap-[15px]">
-        <p className=" underline text-[18px] ">Kategorie:</p>
+        <p className=" text-[18px] ">Kategorie:</p>
         <ul className=" flex flex-col gap-[5px]">
-            <li className=" text-[#555555] underline text-[18px] cursor-pointer">Prsteny</li>
-            <li className=" text-[#555555] underline text-[18px] cursor-pointer">Nahrdelniky</li>
-            <li className=" text-[#555555] underline text-[18px] cursor-pointer">Kyvadla</li>
-            <li className=" text-[#555555] underline text-[18px] cursor-pointer">Nausnice</li>
+            <li className=" text-slate-300 text-[18px] cursor-pointer">Prsteny</li>
+            <li className=" text-slate-300 text-[18px] cursor-pointer">Nahrdelniky</li>
+            <li className=" text-slate-300 text-[18px] cursor-pointer">Kyvadla</li>
+            <li className=" text-slate-300 text-[18px] cursor-pointer">Nausnice</li>
         </ul>
       </div>
     </div>

@@ -53,6 +53,7 @@ background: linear-gradient(rgba(0, 0, 0, .8) 0%, rgba(0, 0, 0, .2) 50%, rgba(0,
     left: 50px;
 }
 .slider-img{
+    position: relative;
     width: 376px;
     height: 454px;
     background-color: rgba(240, 255, 255, 0.264);
