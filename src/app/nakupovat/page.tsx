@@ -105,7 +105,7 @@ const Page = () => {
         ) : error ? (
           <div className="mt-10 text-red-500 text-xl">{error}</div>
         ) : products.length === 0 ? (
-          <div className="mt-10 text-white text-xl">Žádné produkty k zobrazení</div>
+          <div className="mt-10 text-white text-xl   ">Žádné produkty k zobrazení</div>
         ) : (
           <>
             <div className="flex flex-col gap-[30px]">
