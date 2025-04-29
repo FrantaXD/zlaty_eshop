@@ -3,28 +3,42 @@ import type { NextRequest } from 'next/server';
 
 export async function middleware(request: NextRequest) {
     const token = request.cookies.get('jwtToken')?.value;
+    const url = new URL(request.url);
 
-    if (!token) {
-        return NextResponse.redirect(new URL('/', request.url));
+    // Pokud je uživatel na /login a má token, přesměruj na /admin (nebo kamkoliv jinam)
+    if (url.pathname === '/login' && token) {
+        return NextResponse.redirect(new URL('/admin', request.url));
     }
 
-    const res = await fetch('https://apigolde-shop-production-5431.up.railway.app/api/auth/isAdmin', {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-        credentials: 'include',
-    });
+    // Ověření admina na /admin routes
+    if (url.pathname.startsWith('/admin')) {
+        if (!token) {
+            return NextResponse.redirect(new URL('/', request.url));
+        }
 
-    const data = await res.json();
+        try {
+            const res = await fetch('https://apigolde-shop-production-5431.up.railway.app/api/auth/isAdmin', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+                credentials: 'include',
+            });
 
-    if (!data.isAdmin) {
-        return NextResponse.redirect(new URL('/', request.url));
+            const data = await res.json();
+
+            if (!data.isAdmin) {
+                return NextResponse.redirect(new URL('/login', request.url));
+            }
+        } catch (err) {
+            console.error("Middleware auth check failed:", err);
+            return NextResponse.redirect(new URL('/login', request.url));
+        }
     }
 
     return NextResponse.next();
 }
 
-// ⬇️ Tady přidáš matcher
+// ⬇️ Tady upravíme matcher pro oba případy
 export const config = {
-    matcher: ['/admin/:path*'], // Aplikuje middleware na všechny cesty začínající /admin/
+    matcher: ['/admin/:path*', '/login'],
 };

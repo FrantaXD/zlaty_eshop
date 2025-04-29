@@ -32,8 +32,9 @@ export async function login(email: string, password: string) {
             Cookies.set("jwtToken", token); // <-- uložení do cookies
             console.log("Login successful.");
         }
+        return response
     } catch (error: any) {
-        alert("Login failed.");
+        
     }
 }
 
@@ -56,7 +57,7 @@ export async function logout() {
         window.location.href = "/";
     } catch (error: any) {
         console.error("Logout failed:", error);
-        alert("Došlo k chybě při odhlašování.");
+       
     }
 }
 
