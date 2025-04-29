@@ -49,7 +49,7 @@ export function Cart_form() {
       }}
     >
       {({ values }) => (
-        <Form className="mt-[150px] mb-[120px] flex justify-center flex-col w-fit m-auto gap-[59px] ">
+        <Form className="mt-[5px] mb-[120px] flex justify-center flex-col w-fit m-auto gap-[59px] ">
           <div className="flex gap-[50px] m-auto  justify-center align-middle max-[1180px]:flex-col">
           <div className="flex flex-col gap-[22px]">
             <h2 className="text-[36px] text-white text-opacity-75 max-[660px]:text-[28px]">Základní informace</h2>

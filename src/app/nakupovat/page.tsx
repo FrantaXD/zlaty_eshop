@@ -90,7 +90,7 @@ const Page = () => {
 
   return (
     <>
-      <h1 className="text-6xl text-white mt-8 text-center">Nakupovat</h1>
+      <h1 className="text-6xl text-white mt-12 text-center mb-10 max-[600px]:text-[48px]">Nakupovat</h1>
       <button
         className=" bg-[#ECDFCC] w-fit px-4 py-3 text-black sticky top-3 font-bold text-[20px] transition duration-300 hover:bg-[#d9c4a8] hover:scale-105"
         onClick={onClickModal}
@@ -100,7 +100,7 @@ const Page = () => {
       <div className="relative">
       {isModal ? <Filter /> : <></>}
       </div>
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center px-6 mt-4">
         {loading ? (
           <div className="mt-10 text-white text-xl">Načítání produktů...</div>
         ) : error ? (

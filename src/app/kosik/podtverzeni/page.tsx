@@ -33,10 +33,10 @@ export default function Podtvrzeni() {
         return price;
       }
 return (
-  <main className="text-white  flex-1 mt-[60px] mb-24">
+  <main className="text-white  flex-1 mt-[60px] mb-24 ">
     {!counter ? (
-      <div className="flex justify-center">
-        <div className="absolute right-[50%] translate-x-[50%] ">
+      <div className="flex justify-center flex-col">
+        <div className="mx-auto">
           <div className="flex gap-10 h-[155px] items-start relative ">
             <Link href={"/kosik"}>
               <div className="w-[110px] flex flex-col justify-center items-center gap-2 max-[660px]:w-[90px]">
@@ -68,7 +68,7 @@ return (
             <div className="absolute w-[100px] h-[1px] bg-gray-600 top-6 left-[230px] max-[660px]:top-5 max-[660px]:left-[194px] max-[660px]:w-[92px]"></div>
           </div>
         </div>
-        <div className="flex gap-[200px] mt-[200px] max-[1330px]:flex-col max-[660px]:gap-[70px]">
+        <div className="flex gap-[200px] mt-[5px] max-[1330px]:flex-col max-[660px]:gap-[70px] mx-auto">
           <section className="w-[550px] flex flex-col gap-6 max-[660px]:w-[380px] ml-[10px]">
           <div className="text-[32px] flex flex-col gap-2 max-[660px]:text-[24px]">
              <h2 className="text-[36px] text-white text-opacity-75 max-[660px]:text-[28px]">Fakturační adresa</h2>

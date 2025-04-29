@@ -96,7 +96,7 @@ export default function Header() {
       </div>
 
       {navbarOpen && (
-        <div className="md:hidden flex flex-col items-end px-8 pb-4">
+        <div className="relative md:hidden flex flex-col items-end px-8 pb-4 z-50">
           {navLinks.map((link, i) => (
             <button key={i} onClick={() => setNavbarOpen(false)}>
               <Link

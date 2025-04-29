@@ -54,11 +54,11 @@ const Item = (props: ItemProps) => {
   return (
     <div className="w-fit">
       <div
-        className="relative overflow-hidden"
-        style={{ width: `${imageWidth}px`, height: `${imageHeight}px` }}
+        className={`relative overflow-hidden w-[${imageHeight}px] h-[${imageHeight}] max-[600px]:w-[320px] max-[600px]:h-[290px]`}
+    
       >
         <Image
-          src={props.image || `/placeholder.svg?height=${imageHeight}&width=${imageWidth}`}
+          src={props.image || `/placeholder.svg?height=${imageHeight}&width=${imageWidth} `}
           width={imageWidth}
           height={imageHeight}
           alt={props.title}

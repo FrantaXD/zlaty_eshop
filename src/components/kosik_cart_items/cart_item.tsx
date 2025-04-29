@@ -13,7 +13,7 @@ export function Cart_item(props: { value: Item_cart, RemoveItemFromCart: (value:
   if (data && removeItem) {
     return (
         <>
-          <div className="relative w-[239px] h-[239px] overflow-hidden max-[660px]:w-[150px] max-[660px]:h-[100px]">
+          <div className="relative w-[239px] h-[239px] overflow-hidden max-[660px]:w-[150px] max-[660px]:h-[100px] max-[1180px]:w-[170px] max-[1180px]:h-[170px]">
             <Image
               src={data.imagePath}
               alt="product"
@@ -24,13 +24,13 @@ export function Cart_item(props: { value: Item_cart, RemoveItemFromCart: (value:
     
           <div className="text-start flex flex-col justify-between w-[390px] ">
             <div className="max-[660px]:flex max-[660px]:flex-col max-[660px]:gap-1 max-[660px]:-translate-y-3">
-              <h2 className="text-[60px] max-[660px]:text-[36px]">{data.name}</h2>
-              <p className="text-[35px] max-[660px]:text-[30px]">{data.price}</p>
+              <h2 className="text-[60px] max-[660px]:text-[36px] max-[1180px]:text-[48px]">{data.name}</h2>
+              <p className="text-[35px] max-[660px]:text-[30px] max-[1180px]:text-[32px]">{data.price}</p>
             </div>
             <div className="flex justify-end ">
               <button
                 onClick={() => {props.RemoveItemFromCart(removeItem) }}
-                className="text-[30px] text-zinc-100 text-opacity-50 max-[660px]:text-[20px] max-[660px]:-translate-y-7"
+                className="text-[30px] text-zinc-100 text-opacity-50 max-[660px]:text-[20px] max-[660px]:-translate-y-7 max-[1180px]:text-[26px]"
               >
                 <u>Odebrat</u>
               </button>
