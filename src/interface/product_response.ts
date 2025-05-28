@@ -6,7 +6,6 @@ export interface product_curt_post_Interface {
     message: string;
     cart: Cart[];
   }
-  
   export interface Cart {
     productId: string;
     quantity: string;

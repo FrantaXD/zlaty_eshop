@@ -18,9 +18,9 @@ import { Cart_form } from "@/components/kosik_cart_items/cart_form";
 import { useCart } from "@/contexts/CartContext";
 
 export default function Cart() {
-  const [cartItems, setCarItems] = useState<Product_cart[] | undefined>([]);
+  const [cartItems, setCarItems] = useState<Product_cart[] | undefined>(undefined);
   const [fullPrice, setFullPrice] = useState<number>();
-  const { refreshCart } = useCart();
+  const { cartCount, removeCart } = useCart();
   useEffect(() => {
     async function Get_Data() {
     // await post_product({ productId: 2, quantity: 6}).then(e => alert(e?.message));
@@ -47,7 +47,7 @@ export default function Cart() {
   async function RemoveItemFromCart(value: product_curt_post_Interface) {
     if (cartItems) {
       const data = [...cartItems];
-
+       
       const g = data?.findIndex(
         (e) => e.id.toString() === value.productId.toString()
       );
@@ -58,14 +58,20 @@ export default function Cart() {
         data[g].quantity -= 1;
         value.quantity--;
       }
+      if(data){
+        setCarItems((e) => data)
 
-      setCarItems((e) => data)
+      }
+      else{
+        setCarItems((e) => [])
+
+      }
       setFullPrice(getPrice(data))
     }
     setTimeout(async () => {
       if (value.quantity == 0) {
 
-        await delete_products_cart({ productId: value.productId }).then(() => refreshCart());
+        await delete_products_cart({ productId: value.productId }).then(() => removeCart());
         
         var newItems = cartItems?.filter((e) => e.quantity !== 0);
         console.log(newItems);
@@ -73,7 +79,7 @@ export default function Cart() {
         else localStorage.setItem("itemsCount", "ok" );
         setCarItems(newItems);
       } else if (value.quantity >= 1) {
-        await put_products_cart(value).then(() => refreshCart());
+        await put_products_cart(value).then(() => removeCart());
       }
     },1)
     
@@ -130,14 +136,15 @@ export default function Cart() {
         </div>
       </div>
       </div>
-      <div className="flex justify-between  w-[1350px] max-[1450px]:w-[1130px]   m-auto mt-[5px]  max-[1180px]:flex-col max-[1180px]:w-[580px] max-[1180px]:gap-12 max-[660px]:w-[380px] ">
-        <section className="w-[580px] max-[660px]:w-[380px]">
-          {cartItems?.length !== 0 && cartItems ? (
-            cartItems.flatMap((e, index) =>
+      <div className="flex justify-between  w-[1350px] max-[1450px]:w-[1130px]   m-auto mt-[5px]  max-[1180px]:flex-col max-[1180px]:w-[660px] max-[1180px]:gap-12 max-[660px]:w-[380px] ">
+        <section className="w-[660px] max-[660px]:w-[380px]">
+          {cartItems?.length !== 0 && cartItems ? ( 
+            cartItems.flatMap((e, index) => 
               Array.from({ length: e.quantity }, (_, i) => (
+                
                 <div
                   key={`${index}-${i}`}
-                  className="flex gap-6 w-[580px] mb-12 max-[660px]:w-[380px]"
+                  className="flex gap-6 w-[660px] mb-12 max-[660px]:w-[380px]"
                 >
                   <Cart_item
                     value={{
@@ -155,7 +162,9 @@ export default function Cart() {
               ))
             )
           ) : (
-            <h2 className="text-[44px]">Košík je prázdný...</h2>
+            <div>
+            {typeof(cartItems) !== "undefined"  ? <h2 className="text-[44px]">Košík je prázdný...</h2> : <h2 className="text-[44px]">loading...</h2>}
+            </div>
           )}
         </section>
         <section className="text-end flex flex-col gap-[10px] max-[660px]:gap-[6px]">

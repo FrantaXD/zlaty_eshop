@@ -1,4 +1,4 @@
-import { Product_cart } from "@/interface/product_cart";
+import { Product_cart, Get_Once_Product } from "@/interface/product_cart";
 import { product_curt_post_Interface, responde_cart } from "../interface/product_response";
 import axios from "axios";
 
@@ -22,7 +22,11 @@ export async function delete_products_cart(value: { productId: number, }){
 }
 
 export async function get_products(){
- return await reqest.get("/api/products").then(e => e.data).catch(e => e);
+ return await reqest.get("/api/products").then(e => {console.log(e.data);return e.data;}).catch(e => e);
+}
+
+export async function get_product_by_id(id: string): Promise<Get_Once_Product | undefined> {
+  return await reqest.get(`/api/products/${id}`, ).then(e => e.data).catch((e) => undefined)
 }
 
 

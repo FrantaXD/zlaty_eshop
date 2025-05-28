@@ -92,9 +92,9 @@ const Page = () => {
     <>
       <h1 className="text-6xl text-white mt-12 text-center mb-10 max-[600px]:text-[48px]">Nakupovat</h1>
       <button
-        className=" bg-[#ECDFCC] w-fit px-4 py-3 text-black sticky top-3 font-bold text-[20px] transition duration-300 hover:bg-[#d9c4a8] hover:scale-105"
+        className=" bg-[#ECDFCC] w-fit px-4 py-3 max-[600px]:text-[16px] text-black sticky top-3 font-bold text-[20px] transition duration-300 hover:bg-[#d9c4a8] hover:scale-105"
         onClick={onClickModal}
-      >
+        >
         Filtry
       </button>
       <div className="relative">

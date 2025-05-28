@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { post_product } from "@/apis_reqests/products";
 import { useCart } from "@/contexts/CartContext";
+import Link from "next/link";
 
 // Define props for each item
 export interface ItemProps {
@@ -57,13 +58,13 @@ const Item = (props: ItemProps) => {
         className={`relative overflow-hidden w-[${imageHeight}px] h-[${imageHeight}] max-[600px]:w-[320px] max-[600px]:h-[290px]`}
     
       >
-        <Image
+        <Link href={`/nakupovat/${props.id}`}><Image
           src={props.image || `/placeholder.svg?height=${imageHeight}&width=${imageWidth} `}
           width={imageWidth}
           height={imageHeight}
           alt={props.title}
           className="transition-transform duration-300 transform hover:scale-110 cursor-pointer object-cover"
-        />
+        /></Link>
       </div>
 
       <div className="flex justify-between items-start mt-5">
