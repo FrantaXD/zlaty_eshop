@@ -1,10 +1,10 @@
 export interface Product_cart {
-    id: string
-    name: string
-    description: string
-    price: number,
-    category_id: string
-    stock: string
-    quantity: number,
-    mediaUrls: string[]
+  id: number
+  name: string
+  description: string
+  price: number
+  category_id: number
+  stock: number
+  quantity: number
+  mediaUrls: string[]
 }

@@ -5,7 +5,10 @@ import Cookies from "js-cookie";
 const reqest = axios.create({
     baseURL: "https://apigolde-shop-production-5431.up.railway.app/",
     withCredentials: true,
-    headers: {}
+    headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        "Content-Type": "application/json",
+      },
 });
 
 reqest.interceptors.request.use(
