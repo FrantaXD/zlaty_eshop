@@ -86,7 +86,7 @@ export default function AddProductPage() {
         title: "Produkt přidán",
         description: `Produkt "${name}" byl úspěšně přidán.`,
       })
-      router.push("/produkty")
+      router.push("/admin/produkty")
     } catch (err: any) {
       setError(err.message || "Nepodařilo se přidat produkt")
     } finally {

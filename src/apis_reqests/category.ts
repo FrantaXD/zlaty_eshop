@@ -23,3 +23,10 @@ export async function add_category(name: string) {
     .then((e) => e.data)
     .catch((e) => undefined)
 }
+
+export async function delete_category(id: number) {
+  return await reqest
+    .delete(`/api/categories/${id}`)
+    .then((e) => e.data)
+    .catch((e) => undefined)
+}

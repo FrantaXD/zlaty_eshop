@@ -3,11 +3,11 @@ import type { product_curt_post_Interface, responde_cart } from "../interface/pr
 import axios from "axios"
 
 const reqest = axios.create({
-  baseURL: "https://apigolde-shop-production-5431.up.railway.app/",
-   headers: {
-        Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
-        "Content-Type": "application/json",
-      },
+    baseURL: "https://apigolde-shop-production-5431.up.railway.app/",
+    headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+          "Content-Type": "application/json",
+        },
   withCredentials: true,
 })
 
@@ -101,4 +101,11 @@ export async function update_product(id: number, productData: any, mediaFiles: F
   } catch (error: any) {
     return undefined
   }
+}
+
+export async function delete_product(id: number) {
+  return await reqest
+    .delete(`/api/products/${id}`)
+    .then((e) => e.data)
+    .catch((e) => undefined)
 }

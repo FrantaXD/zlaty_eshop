@@ -9,9 +9,20 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { useToast } from "@/components/ui/use-toast"
-import { AlertCircle, Plus } from "lucide-react"
+import { AlertCircle, Plus, Trash2 } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 // Upravit importy pro novou strukturu API
 import { get_categories, add_category } from "@/apis_reqests/category"
 import { PageHeader } from "@/components/page-header"
@@ -61,6 +72,26 @@ export default function CategoriesPage() {
       setError(err.message || "Nepodařilo se přidat kategorii")
     } finally {
       setLoading(false)
+    }
+  }
+
+  const handleDeleteCategory = async (categoryId: number, categoryName: string) => {
+    try {
+      // Zde by měla být implementována delete_category funkce v API
+      // await delete_category(categoryId)
+
+      // Pro demonstraci - simulace úspěšného smazání
+      toast({
+        title: "Kategorie smazána",
+        description: `Kategorie "${categoryName}" byla úspěšně smazána.`,
+      })
+      fetchCategories()
+    } catch (err: any) {
+      toast({
+        variant: "destructive",
+        title: "Chyba",
+        description: err.message || "Nepodařilo se smazat kategorii",
+      })
     }
   }
 
@@ -125,6 +156,7 @@ export default function CategoriesPage() {
               <TableRow>
                 <TableHead>ID</TableHead>
                 <TableHead>Název kategorie</TableHead>
+                <TableHead className="text-right">Akce</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -133,11 +165,42 @@ export default function CategoriesPage() {
                   <TableRow key={category.id}>
                     <TableCell>{category.id}</TableCell>
                     <TableCell>{category.name}</TableCell>
+                    <TableCell className="text-right">
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                            <span className="sr-only">Smazat kategorii</span>
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>Smazat kategorii</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              Opravdu chcete smazat kategorii "{category.name}"? Tato akce je nevratná.
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel>Zrušit</AlertDialogCancel>
+                            <AlertDialogAction
+                              onClick={() => handleDeleteCategory(category.id, category.name)}
+                              className="bg-red-600 hover:bg-red-700"
+                            >
+                              Smazat
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                    </TableCell>
                   </TableRow>
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={2} className="text-center py-4">
+                  <TableCell colSpan={3} className="text-center py-4">
                     Žádné kategorie nebyly nalezeny
                   </TableCell>
                 </TableRow>

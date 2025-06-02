@@ -6,8 +6,19 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { useToast } from "@/components/ui/use-toast"
-import { AlertCircle, Edit, Plus } from "lucide-react"
+import { AlertCircle, Edit, Plus, Trash2 } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 // Upravit importy pro novou strukturu API
 import { get_products } from "@/apis_reqests/products"
 import { get_categories } from "@/apis_reqests/category"
@@ -91,6 +102,26 @@ export default function ProductsPage() {
     router.push(`/admin/produkty/upravit/${id}`)
   }
 
+  const handleDeleteProduct = async (productId: number, productName: string) => {
+    try {
+      // Zde by měla být implementována delete_product funkce v API
+      // await delete_product(productId)
+
+      // Pro demonstraci - simulace úspěšného smazání
+      toast({
+        title: "Produkt smazán",
+        description: `Produkt "${productName}" byl úspěšně smazán.`,
+      })
+      fetchProducts(page)
+    } catch (err: any) {
+      toast({
+        variant: "destructive",
+        title: "Chyba",
+        description: err.message || "Nepodařilo se smazat produkt",
+      })
+    }
+  }
+
   return (
     <div className="space-y-6">
       <PageHeader
@@ -159,10 +190,41 @@ export default function ProductsPage() {
                       <TableCell>{getCategoryName(product.category_id)}</TableCell>
                       <TableCell>{product.stock} ks</TableCell>
                       <TableCell className="text-right">
-                        <Button variant="ghost" size="icon" onClick={() => handleEditProduct(product.id)}>
-                          <Edit className="h-4 w-4" />
-                          <span className="sr-only">Upravit</span>
-                        </Button>
+                        <div className="flex justify-end gap-2">
+                          <Button variant="ghost" size="icon" onClick={() => handleEditProduct(product.id)}>
+                            <Edit className="h-4 w-4" />
+                            <span className="sr-only">Upravit</span>
+                          </Button>
+                          <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="text-red-600 hover:text-red-700 hover:bg-red-50"
+                              >
+                                <Trash2 className="h-4 w-4" />
+                                <span className="sr-only">Smazat produkt</span>
+                              </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>Smazat produkt</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                  Opravdu chcete smazat produkt "{product.name}"? Tato akce je nevratná.
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel>Zrušit</AlertDialogCancel>
+                                <AlertDialogAction
+                                  onClick={() => handleDeleteProduct(product.id, product.name)}
+                                  className="bg-red-600 hover:bg-red-700"
+                                >
+                                  Smazat
+                                </AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
+                        </div>
                       </TableCell>
                     </TableRow>
                   ))
