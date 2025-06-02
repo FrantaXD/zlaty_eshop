@@ -20,6 +20,7 @@ export async function register_admin(
     .then((e) => e.data)
     .catch((e) => undefined)
 }
+//
 
 export async function login(email: string, password: string): Promise<AuthResponse | undefined> {
   return await reqest
