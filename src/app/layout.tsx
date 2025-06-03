@@ -34,7 +34,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased overflow-x-hidden`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} overflow-x-hidden subpixel-antialiased font-light`}>
         <CartProvider>
           <LayoutWrapper>{children}</LayoutWrapper>
         </CartProvider>
