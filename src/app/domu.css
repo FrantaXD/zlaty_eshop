@@ -4,16 +4,17 @@
     width: 100%;
     height: 690px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     overflow: hidden;
-    padding: 156px;
+    padding: 40px;
+    padding-left: 110PX;
     margin-top: 80px;
 }
 .img-container{
    position: relative;
    margin-top: 80px;
-   width: 800px;
+   width: 700px;
    height: 800.1px;
    display: flex;
    justify-content: center;
@@ -27,13 +28,13 @@
    right: 0px;
    background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, #000000 60%);
    z-index: 1;
-   transform: translateX(40px) translateY(-10px);
+   transform: translateX(20px) translateY(10px);
 }
 .img-ring{
-   width: 830px;
-   height: 100%;
+   width: 730px;
+   height: 90%;
    transform: translateY(-35px) translateX(-60px);
-   zoom: 20px;
+   zoom: 10px;
    z-index: 0;
    object-fit: none;
 }

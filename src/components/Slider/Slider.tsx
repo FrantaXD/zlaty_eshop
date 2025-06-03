@@ -17,16 +17,17 @@ export const Slider = () => {
   )); 
   
   useEffect(() => {
-    (async function(){
-      if(once){
+    async function AAA(){
+     
         const product = await get_products().then(e => e);
         console.log(product);
         const imageFromApi: string[] = product.products.map((e:Product_cart) => e.mediaUrls[0]);
         console.log(imageFromApi);
         setImages(imageFromApi);
-        once = false
+      
       }
-    })()
+    
+    AAA();
     const resize = async () => {
       if(window.innerWidth == priveousWidth){
         return;
@@ -47,7 +48,7 @@ export const Slider = () => {
    addEventListener("resize", resize)
 
    return () => { removeEventListener("resize", resize); once = false};
-  })
+  }, [])
   return (
     <section className="slider-container">
       <div className="bacground-container">
@@ -61,7 +62,7 @@ export const Slider = () => {
       </div>
       <section className="slider">
         {items.map((it, i) => (
-          <SliderItem move={move}  items={items} key={i} image={images[i < images.length ? i : images.length -1]}/>
+          <SliderItem move={move}  items={items} key={i} image={images[i < images.length ? i : images.length-1]}/>
         ))}
       </section>
     </section>

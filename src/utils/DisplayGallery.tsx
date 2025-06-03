@@ -72,7 +72,7 @@ const FetchGallery: React.FC<Props> = ({ products }) => {
     return (
         <main className="w-screen min-h-screen p-8 grid md:grid-cols-2 sm:grid-cols-1 gap-4 relative pt-20">
             {/* lightbox */}
-            <div className="w-full h-[100%] bg-black/50 hidden fixed flex-col z-[1000]" id="dv-h">
+            <div className="w-full h-[100%] bg-black/50 hidden fixed flex-col z-[1000] top-0" id="dv-h">
                 {/* close btn*/}
                 <div className="w-full h-[10%] self-start flex justify-center" onClick={() => HandleLightBox()}>
                     <div className="w-[70%] flex justify-end align-bottom" >

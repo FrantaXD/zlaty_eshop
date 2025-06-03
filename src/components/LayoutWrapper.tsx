@@ -88,17 +88,6 @@ function AdminSidebar() {
               <Package className="h-5 w-5" />
               Produkty
             </Link>
-            <Link
-              href="/admin/kosik"
-              className={cn(
-                "flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white transition-colors",
-                pathname === "/admin/kosik" ? "bg-gray-800 text-white" : "",
-              )}
-              onClick={() => setIsOpen(false)}
-            >
-              <ShoppingCart className="h-5 w-5" />
-              Košík
-            </Link>
           </nav>
         </ScrollArea>
       </aside>

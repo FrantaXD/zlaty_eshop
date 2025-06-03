@@ -1,4 +1,4 @@
-import type { Product_cart } from "@/interface/product_cart"
+import type { Get_Once_Product, Product_cart } from "@/interface/product_cart"
 import type { product_curt_post_Interface, responde_cart } from "../interface/product_response"
 import axios from "axios"
 
@@ -53,6 +53,10 @@ export async function get_product(id: number) {
     .catch((e) => e)
 }
 
+
+export async function get_product_by_id(id: string): Promise<Get_Once_Product | undefined> {
+  return await reqest.get(`/api/products/${id}`, ).then(e => e.data).catch((e) => undefined)
+}
 export async function add_product(productData: any, mediaFiles: File[]) {
   try {
     const formData = new FormData()
