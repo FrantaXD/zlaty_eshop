@@ -18,7 +18,6 @@ async function fetchImages(): Promise<GalleryProps | null> { //získání obrák
         return null;
     }   
 }
-
 export default async function Page() {//vykreslení stránky
     const products = await fetchImages();
     if (products===null) {

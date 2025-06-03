@@ -17,12 +17,16 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-playfair);
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 

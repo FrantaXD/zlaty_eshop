@@ -1,11 +1,13 @@
+"use client"
 import type { Get_Once_Product, Product_cart } from "@/interface/product_cart"
 import type { product_curt_post_Interface, responde_cart } from "../interface/product_response"
 import axios from "axios"
+import { Order } from "@/interface/oreders"
 
 const reqest = axios.create({
     baseURL: "https://apigolde-shop-production-5431.up.railway.app/",
     headers: {
-          Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+          Authorization: `Bearer ${typeof window !== "undefined" && localStorage.getItem('jwtToken')}`,
           "Content-Type": "application/json",
         },
   withCredentials: true,
@@ -112,4 +114,13 @@ export async function delete_product(id: number) {
     .delete(`/api/products/${id}`)
     .then((e) => e.data)
     .catch((e) => undefined)
+}
+
+export async function make_order(order: Order): Promise<string | null> {
+  return await reqest
+    .post(`/api/orders`, order, { headers: {}})
+    .then((e) => { alert(e.status); return "ok"})
+    .catch((e) => {
+      alert(e.response.data);
+      return null})
 }

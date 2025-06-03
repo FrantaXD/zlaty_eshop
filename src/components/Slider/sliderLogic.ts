@@ -3,21 +3,43 @@ import { MutableRefObject } from "react";
 
 
 export default async function move(position: MutableRefObject<HTMLDivElement | null>, items: MutableRefObject<HTMLDivElement | null>[], f: number) {
-  console.log("wtf");
+  
     if (f < 6) {
+       let space = 100;
+       let neco = 376;
+          if (window.innerWidth < 1000) {
+            if (window.innerWidth < 500) {
+              space = 10;
+              neco = 340
+            } else {
+              neco = 360
+              space = 20;
+            }
+          }
+         
       items[f] = position;
       if (items[f].current)
-        items[f].current!.style.left = `${(376 + 50) * f}px`;
-      
+        items[f].current!.style.left = `${(neco + space) * f}px`;
     } else {
       if (f === 6) {
         setInterval(() => {
           let min: number = window.innerWidth;
+           let space = 100;
+       let neco = 376;
+          if (window.innerWidth < 1000) {
+            if (window.innerWidth < 500) {
+              space = 10;
+              neco = 340
+            } else {
+              neco = 360
+              space = 20;
+            }
+          }
           items.forEach((element) => {
             if (element.current) {
-              let width = element.current.style.left.split("px");
+              let width = element.current.style.left.split("px")[0];
               element.current.style.left = `${
-                parseFloat(width[0]) + .1
+                parseFloat(width) + .1
               }px`;
             }
           });
@@ -28,7 +50,7 @@ export default async function move(position: MutableRefObject<HTMLDivElement | n
                   min = Math.min(min, element2.current.getBoundingClientRect().left);
                 }
               });
-              element.current.style.left = `${min - 376 - 50}px`;
+              element.current.style.left = `${min - neco - space}px`;
             }
           });
         }, 1);

@@ -21,9 +21,11 @@ export const Slider = () => {
      
         const product = await get_products().then(e => e);
         console.log(product);
-        const imageFromApi: string[] = product.products.map((e:Product_cart) => e.mediaUrls[0]);
-        console.log(imageFromApi);
-        setImages(imageFromApi);
+        if(product != undefined){
+          const imageFromApi: string[] = product.products.map((e:Product_cart) => e.mediaUrls[0]);
+          setImages(imageFromApi);
+
+        }
       
       }
     
@@ -39,7 +41,6 @@ export const Slider = () => {
          if(e.current){
            let width = e.current.style.left.split("px");
            e.current.style.left = `${parseFloat(width[0]) + diferensOfWidth}px`;
-           console.log("wtf2");
          }
        }, 1)
       }

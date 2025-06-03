@@ -2,20 +2,20 @@
     margin-top: 100px;
     margin: 0 auto;
     width: 100%;
-    height: 690px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     align-items: center;
     overflow: hidden;
     padding: 40px;
-    padding-left: 110PX;
     margin-top: 80px;
+    flex-wrap: wrap;
 }
 .img-container{
    position: relative;
    margin-top: 80px;
-   width: 700px;
-   height: 800.1px;
+   width: 500px;
+   height: 520px;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -39,7 +39,7 @@
    object-fit: none;
 }
 .h1-vyroba{
-   font-size: 50px;
+   font-size: 48px;
    font-weight:bolder;
    letter-spacing: -2px;
    margin: 0;
@@ -47,7 +47,7 @@
 }
 .h1-p-vyroba{
    font-size: 24px;
-   width: 100%;
+   width: 700px;
    line-height: 32px;
 }
 .section-vyroba{
@@ -55,8 +55,8 @@
    z-index: 2;
    display: flex;
    flex-direction: column;
-   gap: 18px;
-   transform: translateY(-20px) translateX(30px);
+   gap: 25px;
+   transform: translateY(0px);
 }
 .button-vice{
    font-size: 24px;

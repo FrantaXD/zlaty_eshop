@@ -1,10 +1,11 @@
+"use client"
 import axios from "axios"
 import type { AuthResponse } from "@/interface/auth"
 
 const reqest = axios.create({
   baseURL: "https://apigolde-shop-production-5431.up.railway.app/",
   headers: {
-        Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+        Authorization: `Bearer ${typeof window !== "undefined" && localStorage.getItem('jwtToken')}`,
         "Content-Type": "application/json",
       },
   withCredentials: true,

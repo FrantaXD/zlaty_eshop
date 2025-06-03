@@ -16,10 +16,10 @@ export const SliderItem = (props: {move: (item: MutableRefObject<HTMLDivElement 
 
   return (
     <section className="slider-item" ref={item}>
-      <div className="slider-img"><Image src={props.image} alt="poduct" fill/></div>
+      <div className="slider-img"><Image src={props.image} alt="poduct" fill style={{ objectFit: 'cover' }}/></div>
       <div className="text-info-slider-item">
-        <h3>Lorem</h3>
-        <p>100Kč</p>
+        <h3 className="max-[600px]:!text-[30px]">Lorem</h3>
+        <p className="max-[600px]:!text-[28px]">100Kč</p>
       </div>
     </section>
   );

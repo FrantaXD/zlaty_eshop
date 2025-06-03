@@ -39,13 +39,14 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+console.log("wtf");
 
 
   return (
     <header
-      className={`relative top-0 left-0 w-full z-50 bg-center transition-shadow duration-300 h-24 ${hasShadow ? "shadow-lg" : ""
-        }`}
+      className={`relative top-0 left-0 w-full z-50 bg-center transition-shadow duration-300 h-24 ${
+        hasShadow ? "shadow-lg" : ""
+      }`}
       style={{ backgroundImage: `url(${HeaderImage.src})` }}
     >
       <div className="absolute inset-x-0 bottom-[-30px] bg-gradient-to-t from-black/100 to-transparent h-20"></div>
@@ -68,7 +69,9 @@ export default function Header() {
                     <span className="ml-2">{link.title}</span>
                     {cartCount > 0 && (
                       <div className="absolute -top-2 -right-3 w-5 h-5 bg-red-600 rounded-full flex items-center justify-center">
-                        <p className="text-[17px] text-white mb-[8px]">{cartCount}</p>
+                        <p className="text-[17px] text-white mb-[8px]">
+                          {cartCount}
+                        </p>
                       </div>
                     )}
                   </div>
@@ -87,16 +90,16 @@ export default function Header() {
             </button>
           ))}
         </div>
-
-        <FontAwesomeIcon
-          icon={navbarOpen ? faXmark : faBars}
-          className="md:hidden text-2xl cursor-pointer"
-          onClick={() => setNavbarOpen(!navbarOpen)}
-        />
+       
+          <FontAwesomeIcon
+            icon={navbarOpen ? faXmark : faBars}
+            className="md:!hidden text-2xl cursor-pointer"
+            onClick={() => setNavbarOpen(!navbarOpen)}
+          />
       </div>
 
       {navbarOpen && (
-        <div className="md:hidden flex flex-col items-end px-8 pb-4">
+        <div className="relative md:hidden flex flex-col items-end px-8 pb-4 z-50">
           {navLinks.map((link, i) => (
             <button key={i} onClick={() => setNavbarOpen(false)}>
               <Link
