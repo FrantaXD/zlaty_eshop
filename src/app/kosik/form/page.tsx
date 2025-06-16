@@ -10,10 +10,10 @@ export default function FormKosik() {
   const route = useRouter();
   const cart = useCart();
   useEffect(() => {
-     (async function () {
-      cart.refreshCart();
-       await clear_cart().then((e) => e);
-     })();
+    //  (async function () {
+    //   cart.refreshCart();
+    //    await clear_cart().then((e) => e);
+    //  })();
     if (
       typeof window !== "undefined" &&
       localStorage.getItem("itemsCount") === "none"

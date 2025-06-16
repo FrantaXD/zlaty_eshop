@@ -19,7 +19,7 @@ const Filter = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="bg-[#1D1D1DF7] bg-opacity-80 text-opacity-80 p-5 w-[300px] ml-3  text-white absolute mt-4 ">
+    <div className="bg-[#1D1D1DF7] bg-opacity-80 text-opacity-80 p-5 w-[300px] ml-3  text-white absolute mt-4 z-10">
       <p className="text-[18px] font-bold">Filtry:</p>
       <div className=" flex justify-between">
         <p className="text-[18px] mt-[10px]">Seřadit podle:</p>

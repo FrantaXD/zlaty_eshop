@@ -14,7 +14,7 @@ export default function Home() {
   }, [])
   return (
     <main>
-      <div className="first-vi max-[1360px]:!flex-col max-[1360px]:gap-[30px] max-[600px]:!pl-[15px]">
+      <div className="first-vi max-[1360px]:!flex-col max-[1360px]:gap-[30px] max-[600px]:!pl-[15px] max-[450px]:!mt-[20px]">
         <section className="section-vyroba max-[1360px]:!w-[500px] max-[600px]:!w-[300px]  max-[1360px]:!justify-center max-[1360px]:!items-center">
           <h1 className="h1-vyroba max-[1372px]:!text-[46px] max-[600px]:!text-[30px]">Výroba autorských šperků</h1>
           <p className="h1-p-vyroba max-[1372px]:!w-[500px] max-[1372px]:!text-[22px] max-[600px]:!w-[300px] max-[600px]:!text-[16px]">

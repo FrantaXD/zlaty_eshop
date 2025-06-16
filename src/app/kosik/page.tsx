@@ -163,7 +163,7 @@ export default function Cart() {
             )
           ) : (
             <div>
-            {typeof(cartItems) !== "undefined"  ? <h2 className="text-[44px]">Košík je prázdný...</h2> : <h2 className="text-[44px]">loading...</h2>}
+            {typeof(cartItems) !== "undefined"  ? <h2 className="text-[44px] max-[600px]:text-[30px]">Košík je prázdný...</h2> : <h2 className="text-[44px]">loading...</h2>}
             </div>
           )}
         </section>
