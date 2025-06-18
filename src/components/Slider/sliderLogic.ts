@@ -37,7 +37,7 @@ export default async function move(position: MutableRefObject<HTMLDivElement | n
           }
           items.forEach((element) => {
             if (element.current) {
-              let width = element.current.style.left.split("px")[0];
+              const width = element.current.style.left.split("px")[0];
               element.current.style.left = `${
                 parseFloat(width) + .1
               }px`;

@@ -15,7 +15,7 @@ const Filter = () => {
     setPriceRange(newValue);
   };
   const [sortSelected, setSortSelected] = useState(sortOptions[0]);
-  const [materialSelected, setMaterialSelected] = useState() 
+ 
   const [isOpen, setIsOpen] = useState(false);
 
   return (

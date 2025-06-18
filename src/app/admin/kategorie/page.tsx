@@ -181,7 +181,7 @@ export default function CategoriesPage() {
                           <AlertDialogHeader>
                             <AlertDialogTitle>Smazat kategorii</AlertDialogTitle>
                             <AlertDialogDescription>
-                              Opravdu chcete smazat kategorii "{category.name}"? Tato akce je nevratná.
+                              Opravdu chcete smazat kategorii &ldquo;{category.name}&ldquo;? Tato akce je nevratná.
                             </AlertDialogDescription>
                           </AlertDialogHeader>
                           <AlertDialogFooter>

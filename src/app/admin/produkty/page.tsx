@@ -51,7 +51,7 @@ export default function ProductsPage() {
   const [error, setError] = useState("")
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
-  const [totalProducts, setTotalProducts] = useState(0)
+  const [, setTotalProducts] = useState(0)
   const router = useRouter()
   const { toast } = useToast()
 
@@ -210,7 +210,7 @@ export default function ProductsPage() {
                               <AlertDialogHeader>
                                 <AlertDialogTitle>Smazat produkt</AlertDialogTitle>
                                 <AlertDialogDescription>
-                                  Opravdu chcete smazat produkt "{product.name}"? Tato akce je nevratná.
+                                  Opravdu chcete smazat produkt &ldquo;{product.name}&ldquo;? Tato akce je nevratná.
                                 </AlertDialogDescription>
                               </AlertDialogHeader>
                               <AlertDialogFooter>

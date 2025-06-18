@@ -4,7 +4,6 @@ import { Get_Once_Product } from "@/interface/product_cart";
 import { product_curt_post_Interface } from "@/interface/product_response";
 import Image from "next/image";
 import IMG from "../../../../public/free-icon-play-buttton-5577228.png"
-import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useCart } from "@/contexts/CartContext";

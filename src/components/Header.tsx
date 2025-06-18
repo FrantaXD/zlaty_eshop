@@ -9,7 +9,6 @@ import {
   IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
 import HeaderImage from "../utils/images/Footer.jpg";
-import { get_products_cart } from "@/apis_reqests/products";
 import { useCart } from "@/contexts/CartContext";
 
 interface NavLink {
