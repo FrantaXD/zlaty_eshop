@@ -97,7 +97,6 @@ console.log("wtf");
             onClick={() => setNavbarOpen(!navbarOpen)}
           />
       </div>
-
       {navbarOpen && (
         <div className="relative md:hidden flex flex-col items-end px-8 pb-10 z-50 bg-black">
           {navLinks.map((link, i) => (
@@ -109,7 +108,7 @@ console.log("wtf");
                 {link.icon && link.icon.left && (
                   <FontAwesomeIcon icon={link.icon.icon} />
                 )}{" "}
-                {link.title}{" "}
+                {link.title.toLocaleLowerCase() === "košík" ? <div className="relative">{link.title}<div className="absolute -top-1 -right-10 w-4 h-4 text-[15px] bg-red-600 rounded-full flex items-center justify-center hover:text-black "> {cartCount}</div></div> : link.title}{" "}
                 {link.icon && !link.icon.left && (
                   <FontAwesomeIcon icon={link.icon.icon} />
                 )}

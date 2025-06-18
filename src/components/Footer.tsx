@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 const Footer = () => {
-  const [width, setWidth] = useState<number>(window.innerWidth);
+  const [width, setWidth] = useState<number>( typeof window !== "undefined" ? window.innerWidth : 0);
     useEffect(() => {
       const resize = () => setTimeout(() => { setWidth(window.innerWidth) }, 1);
       window.addEventListener("resize", resize)
